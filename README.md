@@ -12,8 +12,19 @@
 - Docker 실행 환경: Orbstack
 - Docker version: 28.5.2
 
+## 2-1. 환경 명령어 로그
+~~~bash
+#1.os
+sw_vers
+#2.CPU
+uname -m
+
+
+
+
 ## 3. 수행 항목 체크리스트
 - [o] 터미널 기본 조작 및 권한 관리
+- [x] Docker 설치 완료
 
 ## 3-1. 터미널 명령어 로그
 - 터미널을 이용한 깃허브 저장소와 vs code연결하기
