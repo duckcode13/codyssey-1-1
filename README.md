@@ -35,6 +35,10 @@ Docker --version
 - [x] 빈 파일 생성 및 내용 생성
 - [x] Docker 설치 완료
 - [x] Docker 정상 동작 확인
+- [x] Hello world 실행하기
+- [x] 포트 매핑 접속 2회
+- [x] 볼륨 영속성 확인
+- [x] git 설정/ VSC Git Hub에 연동
 
 [터미널 명령어 로그 문서](./terminal_log.md)에서 확인하실 수 있습니다.
 
@@ -55,5 +59,16 @@ echo "Inside Ubuntu Container"
 exit
 
 #4. 이미지 및 컨테이너 목록, 로그, 리소스 확인
-docker 
+docker images
+docker ps -a
+docker stats --no-stream
 ~~~
+
+## 5. Dockerfile 커스텀 이미지 빌드 및 포트 매핑 실행
+~~~bash
+#1. 작성한 dockerfile 기반 커스텀 이미지 빌드
+docker build -t my-web:1.0 .
+
+#2. 포트 매핑 적용 후 컨테이너 실행 (호스트 8080 -> 컨테이너 80)
+docker run -d -p 8080:80 --name my-custom-app my-web:1.0
+
