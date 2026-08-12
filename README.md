@@ -29,7 +29,28 @@ Docker --version
 
 ## 3. 수행 항목 체크리스트
 - [x] 터미널 기본 조작 및 권한 관리
+- [x] 파일 목록 확인 (숨김 파일 포함)
+- [x] 디렉토리 이동
+- [x] 빈 파일 생성 및 내용 생성
 - [x] Docker 설치 완료
 - [x] Docker 정상 동작 확인
 
 [터미널 명령어 로그 문서](./terminal_log.md)에서 확인하실 수 있습니다.
+
+## 4. Docker 기본 점검 및 기본 명령
+~~~bash
+#1. Docker 버전 확인 및 데몬 정보 확인
+docker --version
+docker info
+
+#2. 기본 컨테이너 실행 테스트
+docker run hello-world
+
+#3. Ubuntu 컨테이너 진입 및 명령어 수행
+docker run -it --name ubuntu-test ubuntu bash
+#3-1. 컨테이너 내부 실행
+ls -la
+echo "Inside Ubuntu Container"
+exit
+
+~~~
