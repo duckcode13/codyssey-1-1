@@ -14,10 +14,16 @@
 
 ## 2-1. 환경 명령어 로그
 ~~~bash
-#1.os
+#1. OS
 sw_vers
-#2.CPU
+#2. CPU
 uname -m
+#3. shell
+echo $SHELL
+#4. git version
+git --version
+#5. Doker version
+Docker --version
 ~~~
 
 
