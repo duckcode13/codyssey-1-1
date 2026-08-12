@@ -14,4 +14,8 @@ cd ~/codyssey/practice
 touch testfile.txt
 echo "Hello Codyssey" > testfile.txt
 cat testfile.txt
+#6. 권한 실습 (파일 및 디렉토리 권한 변경)
+ls -l testfile.txt
+chmod 644 testfile.txt
+ls -l testfile.txt
 ~~~
