@@ -16,3 +16,8 @@
 - [o] 터미널 기본 조작 및 권한 관리
 
 ## 3-1. 터미널 명령어 로그
+- 터미널을 이용한 깃허브 저장소와 vs code연결하기
+~~~bash
+#1. 깃허브 저장소 연결
+git clone https://github.com/duckcode13/codyssey-1-1.git
+~~~
