@@ -18,4 +18,7 @@ cat testfile.txt
 ls -l testfile.txt
 chmod 644 testfile.txt
 ls -l testfile.txt
+
+chmod 755 .
+ls -ld .
 ~~~
