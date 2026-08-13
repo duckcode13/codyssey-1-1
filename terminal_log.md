@@ -29,10 +29,10 @@ cat testfile.txt
 출력 -> Hello Codyssey
 
 #6. 파일 복사, 이름 변경, 삭제
-ls -l testfile.txt
-chmod 644 testfile.txt
-ls -l testfile.txt
-
-chmod 755 .
-ls -ld .
+cp testfile.txt copied.txt
+mv copied.txt renamed.txt
+rm testfile.txt
+ls -l
+total 8
+-re-r--r-- 1 wooil staff 15 Aug 113 15:05 renamed.txt
 ~~~

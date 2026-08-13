@@ -32,7 +32,7 @@ Docker --version
 - [x] 파일 권한(r/w/x)와 755,644 실습하고 설명
 - [x] 디렉토리 이동
 - [x] 빈 파일 생성 및 내용 생성
-- [x] Docker 설치 완료
+- [x] Docker 설치 및 기본 점검
 - [x] Docker 기본 운영
 - [x] 컨테이너 실습: Hello world 실행, ubuntu 진입 명령 수행
 - [x] Dockerfile 기반 커스텀 웹 서버 이미지 제작: 베이스 이미지 선택, 커스텀 포인트적용, 빌드 및 실행
@@ -55,6 +55,7 @@ Docker --version
 ## 4-1. 파일 권한 변경
 ~~~bash
 ls -l renamed.txt
+-rw-r--r--  1 wooil staff 15 Aug 13 15:05 renamed.txt #변경 전: 644(-rw-r--w--)
 ~~~
 
 ## 5. Docker 기본 점검 및 기본 명령
