@@ -90,12 +90,38 @@ docker stats --no-stream
 ~~~
 
 ## 6. Dockerfile 커스텀 이미지 빌드 및 포트 매핑 실행
+#1.Dockerfile 생성
 ~~~bash
-#1. 작성한 dockerfile 기반 커스텀 이미지 빌드
+#1-1. app 디렉토리 및 기본 html 생성
+mkdir -p app
+echo "<h1>Hello Codyssey!</h1>" > app/index.html
+
+#1-2. Dockerfile 생성(NGINX 베이스)
+cat << 'EOF' > Dockerfile
+FROM nginx:alpine
+COPY app/index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon dff;"]
+EOF
+~~~
+#2. 작성한 dockerfile 기반 커스텀 이미지 빌드
+~~~bash
 docker build -t my-web:1.0 .
 ~~~
 ![이미지 빌드 증거](screenshot/이미지%20빌드.png)
+
+#3. 컨테이너 실행 및 포트 매핑(2회)
 ~~~bash
-#2. 포트 매핑 적용 후 컨테이너 실행 (호스트 8080 -> 컨테이너 80)
+#3-1. 첫 번째 컨테이너 실행(호스트 8080포트 연결)
 docker run -d -p 8080:80 --name my-custom-app my-web:1.0
+- 접속 테스트
+curl https://localhost:8080
 ~~~
+![포트 매핑 증거](screenshot/포트매핑1.png)
+~~~bash
+#3-2. 두 번째 컨테이너 실행(호스트 8081 포트 연결)
+docker run -d -p 8081:80 --name my-web-8081 my-web:1.0
+- 접속 테스트
+curl http://localhost:8081
+~~~~
+![포트 매핑 증거](screenshot/포트매핑2.png)
