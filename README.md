@@ -42,7 +42,10 @@ Docker --version
 
 [터미널 명령어 로그 문서](./terminal_log.md)에서 확인하실 수 있습니다.
 
-## 4. Docker 기본 점검 및 기본 명령
+## 4. 파일 권한(r/w/x)의 의미
+
+
+## 5. Docker 기본 점검 및 기본 명령
 ~~~bash
 #1. Docker 버전 확인 및 데몬 정보 확인
 docker --version
@@ -64,7 +67,7 @@ docker ps -a
 docker stats --no-stream
 ~~~
 
-## 5. Dockerfile 커스텀 이미지 빌드 및 포트 매핑 실행
+## 6. Dockerfile 커스텀 이미지 빌드 및 포트 매핑 실행
 ~~~bash
 #1. 작성한 dockerfile 기반 커스텀 이미지 빌드
 docker build -t my-web:1.0 .
