@@ -150,3 +150,16 @@ echo 'Updated Host Data dynamically!' > ~/codyssey/html-data/index.html
 curl http://localhost:8082
 ~~~
 ![접속 확인 스크린샷2](screenshot/바인드%20마운트2.png)
+
+## 8. Docker 볼륨 영속성 검증
+: 컨테이너를 삭제해도 docker 볼륨에 저장된 데이터는 그대로 유지되는지 검증합니다.
+~~~bash
+#1.Docker 볼륨 생성
+docker volume create my-persistent-db
+
+#2. 첫 번째 컨테이너에 볼륨 연결 후 내부 데이터 작성
+docker run -d --name db-container-1 -v my-persistent-db:/var/lib/data ubuntu sleep infinity
+docker exec db-container-1 bash -c "echo 'Important Saved Data' > /var/lib/data/saved.txt"
+docker exec db-container-1 cat /var/lib/data/saved.txt
+~~~
+![컨테이너에 볼륨 연결 증거](screenshot/컨테이너-볼륨.png)
