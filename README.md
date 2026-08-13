@@ -55,7 +55,17 @@ Docker --version
 ## 4-1. 파일 권한 변경
 ~~~bash
 ls -l renamed.txt
+-rw-r--r--  1 wooil staff 15 Aug 13 15:05 renamed.txt #변경 전:644(-rw-r--r--)
+
+chmod 755 renamed.txt
+ls -l renamed.txt
+-rwxr-xr-x  1 wooil staff 15 Aug 13 15:05 renamed.txt #변경 후:755(-rwxr-xr-x)
 ~~~
+
+## 4-2. 디렉토리 권한 변경
+~~~bash
+$chmod 700 .$ ls -ld .
+drwx------  3 wooil  staff  96 Aug 13 15:05 .  # 변경 후: 700 (drwx------)
 
 ## 5. Docker 기본 점검 및 기본 명령
 ~~~bash
