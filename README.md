@@ -161,5 +161,16 @@ docker volume create my-persistent-db
 docker run -d --name db-container-1 -v my-persistent-db:/var/lib/data ubuntu sleep infinity
 docker exec db-container-1 bash -c "echo 'Important Saved Data' > /var/lib/data/saved.txt"
 docker exec db-container-1 cat /var/lib/data/saved.txt
+
+#3. 첫 번째 컨테이너 삭제
+docker rm -f db-container-1
+
+#4. 두 번째 컨테이너 생성 및 동일 볼륨 연결
+docker run -d --name db-container-2 -v my-persistent-db:/var/lib/data ubuntu sleep infinity
+
+#5. 데이터 보존 검중(삭제 전 파일이 남아있는지 확인)
+docker exec db-container-2 cat /var/lib/data/saved.txt
 ~~~
 ![컨테이너에 볼륨 연결 증거](screenshot/컨테이너-볼륨.png)
+- 데이터 보존 검증 스크린샷
+![데이터 보존 검증 증거](screenshot/데이터%20보존%20검증.png)
