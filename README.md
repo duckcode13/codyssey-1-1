@@ -125,6 +125,28 @@ docker run -d -p 8081:80 --name my-web-8081 my-web:1.0
 curl http://localhost:8081
 ~~~~
 ![포트 매핑 증거](screenshot/포트매핑2.png)
+
 ![포트 매핑 브라우저 접속 증거](screenshot/포트매핑%20브라우저%20접속.png)
 
 ## 7. 바인드 마운트(Bind Mount)실습
+: 호스트 컴퓨터의 폴더와 컨테이너 내부 폴더를 연결하여, 호스트에서 파일을 수정하면 컨테이너에도 즉시 반영되는지 검증합니다.
+~~~bash
+#1. 호스트 실습용 디렉토리 생성 및 초기 파일 작성
+mkdir -p ~/codyssey/html-data
+echo "Initial Host Data" > ~/codyssey/html-data/index.html
+
+#2. 바인드 마운트 옵션(-v)으로 컨테이너 실행(호스트 8082 포트 연결)
+docker run -d -p 8082:80 -v ~/codyssey/html-data:/usr/share/nginx/html --name bind-test nginx:alpine
+
+#3. 변경 전 접속 확인
+curl http://localhost:8082
+~~~
+![접속 확인 스크린샷](screenshot/바인드%20마운트1.png)
+~~~bash
+#4. 호스트에서 파일 내용 수정
+echo 'Updated Host Data dynamically!' > ~/codyssey/html-data/index.html
+
+#5. 변경 후 접속 확인 (출력 결과 확인)
+curl http://localhost:8082
+~~~
+![접속 확인 스크린샷2](screenshot/바인드%20마운트2.png)
