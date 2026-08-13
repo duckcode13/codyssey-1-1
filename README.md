@@ -206,3 +206,6 @@ git add .
 git commit -m "docs: Codyssey 1-1 과제 최종 완료)"
 #4. GitHub 원격 저장소 푸시
 git push origin main
+~~~
+
+## 10. 트러블 슈팅
