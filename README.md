@@ -42,8 +42,7 @@ Docker --version
   - [x] Docker 볼륨: 생성/연결/컨테이너 삭제 전/후 데이터 유지 검증
 - [x] git 설정 & github/vscode 연동: 'git config --list' 기록, VSCode GitHub 계정 연동 스크린샷 첨부
 - [x] 보안 및 개인정보 보호: 토큰, 비밀번호, 개인키 등 민감정보 마스킹 완료
-
-[터미널 명령어 로그 문서](./terminal_log.md)에서 확인하실 수 있습니다.
+- [x] 트러블 슈팅 건 정리하기
 
 ## 4. 파일 권한(r/w/x)의 의미와 644 vs 755
 - r(read,4): 파일 읽기/디렉토리 목록 조회 권한
@@ -171,6 +170,39 @@ docker run -d --name db-container-2 -v my-persistent-db:/var/lib/data ubuntu sle
 #5. 데이터 보존 검중(삭제 전 파일이 남아있는지 확인)
 docker exec db-container-2 cat /var/lib/data/saved.txt
 ~~~
+- 컨테이너에 볼륨 연결 스크린샷
 ![컨테이너에 볼륨 연결 증거](screenshot/컨테이너-볼륨.png)
 - 데이터 보존 검증 스크린샷
 ![데이터 보존 검증 증거](screenshot/데이터%20보존%20검증.png)
+
+## 9. Git 설정 & github/vscode 연동
+~~~bash
+#1. Git 글로벌 사용자 이름 및 이메일
+git config --global user.name "duckcode13"
+git config --global user.email "wooil080@gmail.com"
+git config --global init.defaultBranch main
+
+#2. Git 설정 내역 출력
+git config --list
+~~~
+- config --list 출력 결과 스크린샷
+![Git 설정 내역 출력 스크린샷](screenshot/config-list.png)
+
+#3. VSCode GitHub 계정 연동
+VSCode 좌측 하단의 계정 아이콘(프로필)을 클릭하여 GitHub 계정으로 로그인합니다.
+연동방법
+1. VSCode 좌측하단의[Accounts](사람 모양 아이콘)클릭
+2. [Sign in with GitHub] 선택 후 브라우저 인증 진행
+3. 로그인 완료 후 계정 상태 확인
+
+#4. 최종 작업 내역 GitHub 푸시
+모든 작업이 끝난 후 아래 명령어로 변경 사항을 커밋하고 GitHub 저장소로 푸시합니다.
+~~~bash
+#1. 파일 상태 확인
+git status
+#2. 모든 변경 사항 스테이징
+git add .
+#3. 커밋 메세지 작성
+git commit -m "docs: Codyssey 1-1 과제 최종 완료)"
+#4. GitHub 원격 저장소 푸시
+git push origin main
