@@ -90,7 +90,7 @@ docker stats --no-stream
 ~~~
 
 ## 6. Dockerfile 커스텀 이미지 빌드 및 포트 매핑 실행
-#1.Dockerfile 생성
+#1. Dockerfile 생성
 ~~~bash
 #1-1. app 디렉토리 및 기본 html 생성
 mkdir -p app
@@ -125,3 +125,6 @@ docker run -d -p 8081:80 --name my-web-8081 my-web:1.0
 curl http://localhost:8081
 ~~~~
 ![포트 매핑 증거](screenshot/포트매핑2.png)
+![포트 매핑 브라우저 접속 증거](screenshot/포트매핑%20브라우저%20접속.png)
+
+## 7. 바인드 마운트(Bind Mount)실습
