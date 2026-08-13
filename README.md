@@ -93,8 +93,9 @@ docker stats --no-stream
 ~~~bash
 #1. 작성한 dockerfile 기반 커스텀 이미지 빌드
 docker build -t my-web:1.0 .
+~~~
 ![이미지 빌드 증거](screenshot/이미지%20빌드.png)
-
+~~~bash
 #2. 포트 매핑 적용 후 컨테이너 실행 (호스트 8080 -> 컨테이너 80)
 docker run -d -p 8080:80 --name my-custom-app my-web:1.0
-
+~~~
