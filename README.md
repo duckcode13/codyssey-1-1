@@ -210,7 +210,7 @@ git push origin main
 
 ## 10. 트러블 슈팅
 
-### 1. case1. bash 터미널 내 특수문자('!') 이력 확장 해석 오류('event not found')
+### case 1. bash 터미널 내 특수문자('!') 이력 확장 해석 오류('event not found')
 ~~~bash
 **문제 상황**:
 'echo "<h1>Hello Codyssey Workstation!</h1>" > app/index.html' 명령어 실행 시 'bash: !:event not found' 에러가 발생하며 파일 생성 실패.
@@ -220,3 +220,28 @@ Bash 쉘 환경에서 큰따움표('"') 내부에 포함된 느낌표('!')를 �
 문자열 내 특수문자 확장을 방지하는 작은 따움표(''')로 감싸서 명령어를 다시 실행함.
 echo '<h1>Hello Codyssey Workstation!</h1>' > app/index.html
 ~~~
+
+### case 2. Dockerfile 부재로 인한 커스텀 이미지 빌드 실패 
+
+**문제 상황**:
+`docker build -t my-web:1.0 .` 명령어 실행 시 아래와 같은 빌드 실패 에러 발생.
+`ERROR: failed to build: failed to solve: failed to read`
+`dockerfile: open Dockerfile: no such file or directory`
+
+**원인 분석**:
+Docker가 현재 작업 디렉토리 내에서 Dockerfile을 찾지 못함. (파일명 대소문자 불일치, 확장자 문제, 또는 파일 미생성 상태)
+
+**해결 방법**:
+`ls -la` 명령어로 파일 목록을 검증한 뒤, CLI명령어로 지정된 위치에 Dockerfile을 새로 생성하고 빌드를 재시도하여 성공함.
+~~~bash
+cat << 'EOF' > Dockerfile
+FROM nginx:alpine
+COPY app/index.html /usr/share/nginx/html/index.html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon dff;"]
+EOF
+
+docker duild -t my-web:1.0 .
+~~~
+
+
