@@ -211,12 +211,12 @@ git push origin main
 ## 10. 트러블 슈팅
 
 ### 1. case1. bash 터미널 내 특수문자('!') 이력 확장 해석 오류('event not found')
+~~~bash
 **문제 상황**:
 'echo "<h1>Hello Codyssey Workstation!</h1>" > app/index.html' 명령어 실행 시 'bash: !:event not found' 에러가 발생하며 파일 생성 실패.
 **원인 분석**:
 Bash 쉘 환경에서 큰따움표('"') 내부에 포함된 느낌표('!')를 이전 명령 이력을 참조하는 특수문자로 인식하여 발생한 문제.
 **해결 방법**:
 문자열 내 특수문자 확장을 방지하는 작은 따움표(''')로 감싸서 명령어를 다시 실행함.
-~~~bash
 echo '<h1>Hello Codyssey Workstation!</h1>' > app/index.html
 ~~~
